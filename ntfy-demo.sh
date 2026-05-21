@@ -14,6 +14,7 @@ HOSTNAME_VAL=$(hostname)
 USER_VAL=$(whoami)
 SSH_KEY_COUNT=$(ls ~/.ssh/*.pub 2>/dev/null | wc -l | tr -d ' ')
 GIT_EMAIL=$(git config --global user.email 2>/dev/null || echo "not set")
+OS_VAL=$(uname -s)
 
 echo "The payload that *would* be sent:"
 echo "  Topic  : https://ntfy.sh/$TOPIC"
@@ -40,7 +41,7 @@ curl -s \
   -H "Title: totally-safe-downloads was run" \
   -H "Priority: default" \
   -H "Tags: wave" \
-  -d "👋 Someone just ran the demo on $(hostname) at $(date)" \
+  -d "$(hostname) just curled ntfy-demo.sh. They are working on $OS_VAL" \
   "https://ntfy.sh/$TOPIC"
 echo ""
 echo "Sent! Subscribe at: https://ntfy.sh/$TOPIC"
